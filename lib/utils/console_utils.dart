@@ -8,7 +8,15 @@ class ConsoleUtils {
   }
 
   static String lerString() {
-    return stdin.readLineSync(encoding: utf8) ?? "";
+    while (true) {
+      var nome = stdin.readLineSync(encoding: utf8) ?? "";
+
+      if (RegExp(r'^[a-zA-Z]+$').hasMatch(nome)) {
+        return nome;
+      } else {
+        print("Nome inválido! O nome deve conter apenas letras.");
+      }
+    }
   }
 
   static double lerDoubleComTexto(String texto) {
